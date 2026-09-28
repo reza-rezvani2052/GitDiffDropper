@@ -10,6 +10,12 @@ from UI.ui_mainwindow import Ui_MainWindow
 
 from utility import measure_time, Utility
 
+GIT_PROCESS_FLAGS = (
+    subprocess.CREATE_NO_WINDOW
+    if hasattr(subprocess, "CREATE_NO_WINDOW")
+    else 0
+)
+
 
 class MainWindow(QMainWindow):
 
@@ -96,6 +102,18 @@ class MainWindow(QMainWindow):
 
         event.acceptProposedAction()
 
+    @staticmethod
+    def run_git(args: list[str]) -> subprocess.CompletedProcess:
+        return subprocess.run(
+                ["git", *args],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                check=False,
+                creationflags=GIT_PROCESS_FLAGS,
+                )
+
     def _create_diff_file(self, source_path: Path) -> Path:
         """خروجی git diff فایل را در Desktop ذخیره می‌کند."""
         repo_root = self._find_git_root(source_path.parent)
@@ -107,20 +125,14 @@ class MainWindow(QMainWindow):
                 / f"diff-{source_path.name}.txt"
         )
 
-        result = subprocess.run(
+        result = self.run_git(
                 [
-                    "git",
                     "-C",
                     str(repo_root),
                     "diff",
                     "--",
                     str(relative_path),
-                    ],
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                check=False,
+                    ]
                 )
 
         if result.returncode != 0:
@@ -138,19 +150,13 @@ class MainWindow(QMainWindow):
     @staticmethod
     def _find_git_root(start_path: Path) -> Path:
         """نزدیک‌ترین Git repository را از مسیر فایل پیدا می‌کند."""
-        result = subprocess.run(
+        result = MainWindow.run_git(
                 [
-                    "git",
                     "-C",
                     str(start_path),
                     "rev-parse",
                     "--show-toplevel",
-                    ],
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                check=False,
+                    ]
                 )
 
         if result.returncode != 0:
