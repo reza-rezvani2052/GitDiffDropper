@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>503</width>
+    <height>295</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Git Diff Dropper</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../RC/rc.qrc">
+    <normaloff>:/img/app-icon.png</normaloff>:/img/app-icon.png</iconset>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LayoutDirection::RightToLeft</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="layoutDirection">
+    <enum>Qt::LayoutDirection::RightToLeft</enum>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::RightToLeft</enum>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="text">
+       <string>فایل‌های موردنظر را اینجا درگ کنی
+برای هر فایل، خروجی git diff روی دسکتاپ ذخیره می‌شود</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <action name="actAbout">
+   <property name="icon">
+    <iconset resource="../RC/rc.qrc">
+     <normaloff>:/img/about.png</normaloff>:/img/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>درباره برنامه</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F1</string>
+   </property>
+  </action>
+  <action name="actSettings">
+   <property name="icon">
+    <iconset resource="../RC/rc.qrc">
+     <normaloff>:/img/options.png</normaloff>:/img/options.png</iconset>
+   </property>
+   <property name="text">
+    <string>تنظیمات</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actQuit">
+   <property name="icon">
+    <iconset resource="../RC/rc.qrc">
+     <normaloff>:/img/close.png</normaloff>:/img/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>بستن برنامه</string>
+   </property>
+   <property name="toolTip">
+    <string>بستن برنامه</string>
+   </property>
+  </action>
+  <action name="actCamera">
+   <property name="icon">
+    <iconset resource="../RC/rc.qrc">
+     <normaloff>:/img/app-icon.png</normaloff>:/img/app-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>نمایش وب‌کم</string>
+   </property>
+   <property name="toolTip">
+    <string>نمایش وب‌کم - Ctrl+W</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actAddDateToWatermark">
+   <property name="text">
+    <string>افزودن تاریخ</string>
+   </property>
+  </action>
+  <action name="actAddTimeToWatermark">
+   <property name="text">
+    <string>افزودن ساعت</string>
+   </property>
+  </action>
+  <action name="actHelp">
+   <property name="icon">
+    <iconset resource="../RC/rc.qrc">
+     <normaloff>:/img/help.png</normaloff>:/img/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>راهنما</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actStopWebcam">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>:/img/turn-off-webcam.png</normaloff>:/img/turn-off-webcam.png</iconset>
+   </property>
+   <property name="text">
+    <string>توقف وب‌کم</string>
+   </property>
+   <property name="toolTip">
+    <string>توقف وب‌کم - Ctrl+M</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actLibMemberPicExtractor">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/img/members.png</normaloff>:/img/members.png</iconset>
+   </property>
+   <property name="text">
+    <string>دانلود تصاویر اعضاء و ساخت گالری</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../RC/rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
